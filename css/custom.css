@@ -1,0 +1,77 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(-45deg, #ee7752, #3c86e7, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+  color: white;
+}
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+
+  50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+.contact-item{
+  background-color: #005380a1;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.contact-item img{
+  height: 40px;
+  width: 40px;
+}
+
+i{
+  margin-top: 11px;
+}
+
+.name{
+  margin-right: 17px;
+}
+
+@media (max-width: 780px){
+  .name{
+    margin-right: 6px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

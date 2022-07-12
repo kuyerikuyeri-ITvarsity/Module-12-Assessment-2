@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/custom.css">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <br>
+        <div class="container">
+            <form id="editForm">
+                <label for="firstname" class="w-75 d-block mx-auto">First Name</label>
+                <input type="text" name="firstname" id="firstname" class="form-control w-75 mx-auto"><br>
+                <label for="lastname" class="w-75 d-block mx-auto">Last Name</label>
+                <input type="text" name="lastname" id="lastname" class="form-control w-75 mx-auto"><br>
+                <label for="mobile" class="w-75 d-block mx-auto">Mobile</label>
+                <input type="text" id="mobile" name="mobile" class="form-control w-75 mx-auto"><br>
+                <label for="email" class="w-75 d-block mx-auto">Email</label>
+                <input type="email" name="email" id="email" class="form-control w-75 mx-auto"><br>
+                <label for="avatar" class="w-75 d-block mx-auto">Select a file</label>
+                <input type="file" id="avatar" name="avatar" class="form-control w-75 mx-auto"><br>
+                <button type="submit" id="submitForm" class="btn btn-primary d-block mx-auto mb-1">Submit</button>
+            </form>
+            <button id="homeLink" type="button" class="btn btn-primary d-block mx-auto mb-1">Home</button>
+        </div>
+        <br>
+        
+
+        <script src="js/bootstrap.js"></script>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="https://kit.fontawesome.com/2462261de4.js" crossorigin="anonymous"></script>
+
+        <script src="config.js"></script>
+
+        <script>
+            document.getElementById('submitForm').addEventListener('click', submitForm);
+            document.getElementById('homeLink').addEventListener('click', homeLink);
+
+            function submitForm(e){
+                e.preventDefault();
+
+                const form = new FormData(document.querySelector('#editForm'));
+                form.append('apiKey', apiKey);
+
+                fetch(rootPath + 'controller/insert-contact/', {
+                    method: 'POST',
+                    headers: {'Accept': 'application/json, *.*'},
+                    body: form
+                })
+
+                .then(function(response){
+                    return response.text();
+                })
+
+                .then(function(data){
+                    if(data == "1"){
+                        alert("Contact added.");
+                        homeLink();
+                    }else{
+                        alert(data);
+                        homeLink();
+                    }
+                })
+            }
+
+            function homeLink(){
+                window.open('index.html', '_self');
+            }
+        </script>
+    </body>
+</html>
